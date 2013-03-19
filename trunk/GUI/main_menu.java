@@ -13,6 +13,10 @@ import java.awt.Toolkit;
 import javax.swing.JSeparator;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 
@@ -21,7 +25,6 @@ public class main_menu {
 
 	private ilanguage language;
 	private JFrame frmVTeg;
-
 
 	/**
 	 * Launch the application.
@@ -66,6 +69,8 @@ public class main_menu {
 		frmVTeg.getContentPane().add(menuBar, BorderLayout.NORTH);
 		
 		JMenu mnGame = new JMenu(language.main_menu_menu_game);
+		mnGame.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		mnGame.setIcon(new ImageIcon(main_menu.class.getResource("/RESOURCES/Icons/game.png")));
 		menuBar.add(mnGame);
 		
 		JMenuItem miConnect = new JMenuItem(language.main_menu_menu_game_connect);
@@ -80,10 +85,29 @@ public class main_menu {
 		JMenuItem miExit = new JMenuItem(language.main_menu_menu_game_exit);
 		mnGame.add(miExit);
 		
+		JMenu mnActions = new JMenu(language.main_menu_menu_actions);
+		mnActions.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		mnActions.setIcon(new ImageIcon(main_menu.class.getResource("/RESOURCES/Icons/acctions.png")));
+		menuBar.add(mnActions);
+		
 		JMenu mnSettings = new JMenu(language.main_menu_menu_settings);
+		mnSettings.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		mnSettings.setIcon(new ImageIcon(main_menu.class.getResource("/RESOURCES/Icons/config.png")));
 		menuBar.add(mnSettings);
 		
+		JMenu mnLanguage = new JMenu(language.main_menu_menu_settings_language);
+		mnSettings.add(mnLanguage);
+		
+		JMenuItem miLang0 = new JMenuItem(language.main_menu_menu_settings_language_spanish);
+		mnLanguage.add(miLang0);
+		
+		JMenuItem miEnglish = new JMenuItem(language.main_menu_menu_settings_language_english);
+		miEnglish.setEnabled(false);
+		mnLanguage.add(miEnglish);
+		
 		JMenu mnHelp = new JMenu(language.main_menu_menu_help);
+		mnHelp.setFont(new Font("Segoe UI", Font.BOLD, 12));
+		mnHelp.setIcon(new ImageIcon(main_menu.class.getResource("/RESOURCES/Icons/help.png")));
 		menuBar.add(mnHelp);
 		
 		JMenuItem miInstructions = new JMenuItem(language.main_menu_menu_help_instructions);
@@ -104,8 +128,7 @@ public class main_menu {
 		JPanel panel_south = new JPanel();
 		frmVTeg.getContentPane().add(panel_south, BorderLayout.SOUTH);
 		
-		JLabel lblNewLabel = new JLabel("VIRTUAL T.E.G - M@ti@s - 2013");
+		JLabel lblNewLabel = new JLabel("VIRTUAL T.E.G - 2013");
 		panel_south.add(lblNewLabel);
 	}
-
 }
