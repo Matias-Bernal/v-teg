@@ -17,6 +17,8 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 
@@ -53,6 +55,10 @@ public class main_menu {
 	public ilanguage getLanguage(){
 		return language;
 	}
+	
+	public JFrame getFrameMenu(){
+		return frmVTeg;
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -83,6 +89,11 @@ public class main_menu {
 		mnGame.add(separator_game);
 		
 		JMenuItem miExit = new JMenuItem(language.main_menu_menu_game_exit);
+		miExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 		mnGame.add(miExit);
 		
 		JMenu mnActions = new JMenu(language.main_menu_menu_actions);
@@ -116,7 +127,13 @@ public class main_menu {
 		JMenuItem miRules = new JMenuItem(language.main_menu_menu_help_rules);
 		mnHelp.add(miRules);
 		
-		JMenuItem miAbout = new JMenuItem(language.main_menu_menu_help_about);
+		final JMenuItem miAbout = new JMenuItem(language.main_menu_menu_help_about);
+		miAbout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				About_Game ag = new About_Game(getLanguage());
+				ag.setVisible(true);
+			}
+		});
 		mnHelp.add(miAbout);
 		
 		JSeparator separator = new JSeparator();
