@@ -21,7 +21,7 @@ public class lang_es extends ilanguage {
 		set_mm_game_help("Ayuda");
 		set_mm_game_help_instructions("Instrucciones");
 		set_mm_game_help_rules("Reglas");
-		set_mm_game_help_about("Acerce de");
+		set_mm_game_help_about("Acerca de");
 		
 		//
 		set_aw_tittle("Acerca de.");
