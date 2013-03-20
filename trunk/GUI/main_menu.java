@@ -9,6 +9,7 @@ import javax.swing.JMenuBar;
 import java.awt.BorderLayout;
 import javax.swing.JMenu;
 import RESOURCES.*;
+
 import javax.swing.JMenuItem;
 import java.awt.Toolkit;
 
@@ -86,6 +87,12 @@ public class main_menu {
 		menuBar.add(mnGame);
 		
 		JMenuItem miConnect = new JMenuItem(language.main_menu_menu_game_connect);
+		miConnect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Connection_window connection = new Connection_window();
+				connection.setVisible(true);
+			}
+		});
 		mnGame.add(miConnect);
 		
 		JMenuItem miDisconnect = new JMenuItem(language.main_menu_menu_game_disconnect);
@@ -115,11 +122,22 @@ public class main_menu {
 		JMenu mnLanguage = new JMenu(language.main_menu_menu_settings_language);
 		mnSettings.add(mnLanguage);
 		
-		JMenuItem miLang0 = new JMenuItem(language.main_menu_menu_settings_language_spanish);
-		mnLanguage.add(miLang0);
+		JMenuItem miSpanish = new JMenuItem(language.main_menu_menu_settings_language_spanish);
+		miSpanish.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				language = new lang_es();
+				frmVTeg.repaint();
+			}
+		});
+		mnLanguage.add(miSpanish);
 		
 		JMenuItem miEnglish = new JMenuItem(language.main_menu_menu_settings_language_english);
 		miEnglish.setEnabled(false);
+		miEnglish.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			//	language = new lang_en();
+			}
+		});
 		mnLanguage.add(miEnglish);
 		
 		JMenu mnHelp = new JMenu(language.main_menu_menu_help);
