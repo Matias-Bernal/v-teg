@@ -12,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
 @SuppressWarnings("serial")
-public class Instructions_window extends JFrame {
+public class Rules_Window extends JFrame {
 
 	private JPanel contentPane;
 
@@ -21,7 +21,7 @@ public class Instructions_window extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Instructions_window window = new Instructions_window();
+					Rules_Window window = new Rules_Window();
 					window.contentPane.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +32,7 @@ public class Instructions_window extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Instructions_window() {
+	public Rules_Window() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
