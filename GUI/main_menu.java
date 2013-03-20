@@ -149,6 +149,12 @@ public class main_menu {
 		mnHelp.add(miInstructions);
 		
 		JMenuItem miRules = new JMenuItem(language.main_menu_menu_help_rules);
+		miRules.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Rules_Window rules = new Rules_Window();
+				rules.setVisible(true);
+			}
+		});
 		mnHelp.add(miRules);
 		
 		JMenuItem miAbout = new JMenuItem(language.main_menu_menu_help_about);
