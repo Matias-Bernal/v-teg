@@ -24,14 +24,14 @@ public class ilanguage {
 	
 	//About window
 	
-	public String about_tittle = null;
+	public String about_title = null;
 	public String about_text = null;
 	
 
-	public void set_mm_tittle(String tittle){
+	public void set_mm_title(String tittle){
 		main_menu_title = tittle;
 	}
-	public String get_mm_tittle(){
+	public String get_mm_title(){
 		return main_menu_title;
 	}
 	
@@ -82,7 +82,7 @@ public class ilanguage {
 	//
 	
 	public void set_aw_tittle(String tittle){
-		about_tittle = tittle;
+		about_title = tittle;
 	}
 	
 	public void set_aw_text(String text){

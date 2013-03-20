@@ -4,7 +4,7 @@ public class lang_es extends ilanguage {
 
 	public lang_es(){
 		
-		set_mm_tittle("Virtual T.E.G");
+		set_mm_title("Virtual T.E.G");
 		
 		set_mm_game("Partida");
 		set_mm_game_connect("Conectar");

@@ -136,7 +136,7 @@ public class main_menu {
 		JMenuItem miAbout = new JMenuItem(language.main_menu_menu_help_about);
 		miAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null,language.about_text,language.about_tittle, JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null,language.about_text,language.about_title, JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		mnHelp.add(miAbout);
