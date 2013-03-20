@@ -1,15 +1,19 @@
 package GUI;
 
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.Graphics;
 
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import java.awt.BorderLayout;
 import javax.swing.JMenu;
 import RESOURCES.*;
-import RESOURCES.lang_es;
 import javax.swing.JMenuItem;
 import java.awt.Toolkit;
+
+import javax.swing.Icon;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -19,6 +23,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 
 
 
@@ -127,11 +133,10 @@ public class main_menu {
 		JMenuItem miRules = new JMenuItem(language.main_menu_menu_help_rules);
 		mnHelp.add(miRules);
 		
-		final JMenuItem miAbout = new JMenuItem(language.main_menu_menu_help_about);
+		JMenuItem miAbout = new JMenuItem(language.main_menu_menu_help_about);
 		miAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				About_Game ag = new About_Game(getLanguage());
-				ag.setVisible(true);
+				JOptionPane.showMessageDialog(null,language.about_text,language.about_tittle, JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		mnHelp.add(miAbout);
