@@ -3,34 +3,32 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.Action;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JSeparator;
+import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
-import java.awt.Component;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.Writer;
-
+import javax.swing.ScrollPaneConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Caret;
-import javax.swing.text.Document;
-import javax.swing.text.EditorKit;
-import javax.swing.text.ViewFactory;
-import javax.swing.JTextArea;
-import javax.swing.JEditorPane;
-import java.awt.Scrollbar;
 
+@SuppressWarnings("serial")
 public class Instructions_window extends JFrame {
 
 	private JPanel contentPane;
 
+	//Launch the application.
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Instructions_window window = new Instructions_window();
+					window.contentPane.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -40,19 +38,37 @@ public class Instructions_window extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		//setContentPane(contentPane);
 		
-		JTextPane txtpnHolaVengoA = new JTextPane();
-		contentPane.add(txtpnHolaVengoA, BorderLayout.CENTER);
-		txtpnHolaVengoA.setContentType("text/html");
-		txtpnHolaVengoA.setText( 
+		JTextPane tpInstructions = new JTextPane();
+		contentPane.add(tpInstructions, BorderLayout.CENTER);
+		tpInstructions.setContentType("text/html");
+		tpInstructions.setText( 
+						"<head><base href=\""+this.getClass().getResource("/")+"\"></head>"+
 						"<b>hola</b><br>" + "<i>adios</i><br>" +
 						"<font face=\"arial\">fuente arial</font><br>" +
 						"<font face=\"courier\">fuente courier</font><br>" +
 						"<font size=\"24\">fuente grande</font><br>" +
 						"<font color=\"red\">color rojo</font><br>"+
-						"<img src=\"RESOURCES\\Icons\\game.png\"></img>");
-		txtpnHolaVengoA.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+						"<img src=\"RESOURCES\\Icons\\game.png\"></img>"+
+						"<b>hola</b><br>" + "<i>adios</i><br>" +
+						"<b>hola</b><br>" + "<i>adios</i><br>" +
+						"<b>hola</b><br>" + "<i>adios</i><br>" +
+						"<b>hola</b><br>" + "<i>adios</i><br>" +
+						"<b>hola</b><br>" + "<i>adios</i><br>" +
+						"<b>hola</b><br>" + "<i>adios</i><br>" +
+						"<b>hola</b><br>" + "<i>adios</i><br>" +
+						"<b>hola</b><br>" + "<i>adios</i><br>" +
+						"<b>hola</b><br>" + "<i>adios</i><br>");
+		tpInstructions.setCaretPosition(0);
+		tpInstructions.setEditable(false);
+		tpInstructions.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		
+		JScrollPane scrollPane = new JScrollPane ();
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setViewportView(contentPane);
+		setContentPane(scrollPane);
 	}
 
 }

@@ -1,31 +1,24 @@
 package GUI;
 
-import java.awt.Component;
-import java.awt.EventQueue;
-import java.awt.Graphics;
-
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
 import java.awt.BorderLayout;
-import javax.swing.JMenu;
-import RESOURCES.*;
-
-import javax.swing.JMenuItem;
-import java.awt.Toolkit;
-
-import javax.swing.Icon;
-import javax.swing.JOptionPane;
-import javax.swing.JSeparator;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
+import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+
+import RESOURCES.ilanguage;
+import RESOURCES.lang_es;
 
 
 
@@ -136,6 +129,7 @@ public class main_menu {
 		miEnglish.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			//	language = new lang_en();
+				frmVTeg.repaint();
 			}
 		});
 		mnLanguage.add(miEnglish);
@@ -146,6 +140,12 @@ public class main_menu {
 		menuBar.add(mnHelp);
 		
 		JMenuItem miInstructions = new JMenuItem(language.main_menu_menu_help_instructions);
+		miInstructions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Instructions_window intructions = new Instructions_window();
+				intructions.setVisible(true);
+			}
+		});
 		mnHelp.add(miInstructions);
 		
 		JMenuItem miRules = new JMenuItem(language.main_menu_menu_help_rules);
