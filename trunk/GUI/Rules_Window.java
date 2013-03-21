@@ -4,24 +4,28 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 @SuppressWarnings("serial")
 public class Rules_Window extends JFrame {
 
 	private JPanel contentPane;
+	private JMenuItem item;
 
 	//Launch the application.
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Rules_Window window = new Rules_Window();
+					Rules_Window window = new Rules_Window(new JMenuItem(), new JFrame());
 					window.contentPane.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,14 +36,21 @@ public class Rules_Window extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Rules_Window() {
+	public Rules_Window(JMenuItem i, JFrame rootFrame) {
+		item=i;
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent arg0) {
+				item.setEnabled(true);
+			}
+		});
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
-		//setContentPane(contentPane);
-		
+		item.setEnabled(false);
+		rootFrame.repaint();
 		JTextPane tpInstructions = new JTextPane();
 		contentPane.add(tpInstructions, BorderLayout.CENTER);
 		tpInstructions.setContentType("text/html");
