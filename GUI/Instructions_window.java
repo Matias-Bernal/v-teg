@@ -4,24 +4,28 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 @SuppressWarnings("serial")
 public class Instructions_window extends JFrame {
 
 	private JPanel contentPane;
+	private JMenuItem item;
 
 	//Launch the application.
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Instructions_window window = new Instructions_window();
+					Instructions_window window = new Instructions_window(new JMenuItem(), new JFrame());
 					window.contentPane.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +36,17 @@ public class Instructions_window extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Instructions_window() {
+	public Instructions_window(JMenuItem i,JFrame rootFrame) {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent e) {
+				item.setEnabled(true);
+			}
+		});
+		item=i;
+		
+		item.setEnabled(false);
+		rootFrame.repaint();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

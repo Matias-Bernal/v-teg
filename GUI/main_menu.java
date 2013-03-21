@@ -27,7 +27,21 @@ public class main_menu {
 
 	private ilanguage language;
 	private JFrame frmVTeg;
-
+	private JMenuBar menuBar;
+	private JMenu mnGame;
+	private JMenuItem miConnect;
+	private JMenuItem miDisconnect;
+	private JMenuItem miExit;
+	private JMenu mnActions;
+	private JMenu mnSettings;
+	private JMenuItem miSpanish;
+	private JMenuItem miEnglish;
+	private JMenu mnHelp;
+	private JMenuItem miInstructions;
+	private JMenuItem miRules;
+	private JMenuItem miAbout;
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -71,15 +85,15 @@ public class main_menu {
 		frmVTeg.setBounds(100, 100, 700, 500);
 		frmVTeg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JMenuBar menuBar = new JMenuBar();
+		menuBar = new JMenuBar();
 		frmVTeg.getContentPane().add(menuBar, BorderLayout.NORTH);
 		
-		JMenu mnGame = new JMenu(language.main_menu_menu_game);
+		mnGame = new JMenu(language.main_menu_menu_game);
 		mnGame.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		mnGame.setIcon(new ImageIcon(main_menu.class.getResource("/RESOURCES/Icons/game.png")));
 		menuBar.add(mnGame);
 		
-		JMenuItem miConnect = new JMenuItem(language.main_menu_menu_game_connect);
+		miConnect = new JMenuItem(language.main_menu_menu_game_connect);
 		miConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Connection_window connection = new Connection_window();
@@ -88,13 +102,13 @@ public class main_menu {
 		});
 		mnGame.add(miConnect);
 		
-		JMenuItem miDisconnect = new JMenuItem(language.main_menu_menu_game_disconnect);
+		miDisconnect = new JMenuItem(language.main_menu_menu_game_disconnect);
 		mnGame.add(miDisconnect);
 		
 		JSeparator separator_game = new JSeparator();
 		mnGame.add(separator_game);
 		
-		JMenuItem miExit = new JMenuItem(language.main_menu_menu_game_exit);
+		miExit = new JMenuItem(language.main_menu_menu_game_exit);
 		miExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
@@ -102,12 +116,12 @@ public class main_menu {
 		});
 		mnGame.add(miExit);
 		
-		JMenu mnActions = new JMenu(language.main_menu_menu_actions);
+		mnActions = new JMenu(language.main_menu_menu_actions);
 		mnActions.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		mnActions.setIcon(new ImageIcon(main_menu.class.getResource("/RESOURCES/Icons/acctions.png")));
 		menuBar.add(mnActions);
 		
-		JMenu mnSettings = new JMenu(language.main_menu_menu_settings);
+		mnSettings = new JMenu(language.main_menu_menu_settings);
 		mnSettings.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		mnSettings.setIcon(new ImageIcon(main_menu.class.getResource("/RESOURCES/Icons/config.png")));
 		menuBar.add(mnSettings);
@@ -115,7 +129,7 @@ public class main_menu {
 		JMenu mnLanguage = new JMenu(language.main_menu_menu_settings_language);
 		mnSettings.add(mnLanguage);
 		
-		JMenuItem miSpanish = new JMenuItem(language.main_menu_menu_settings_language_spanish);
+		miSpanish = new JMenuItem(language.main_menu_menu_settings_language_spanish);
 		miSpanish.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				language = new lang_es();
@@ -124,7 +138,7 @@ public class main_menu {
 		});
 		mnLanguage.add(miSpanish);
 		
-		JMenuItem miEnglish = new JMenuItem(language.main_menu_menu_settings_language_english);
+		miEnglish = new JMenuItem(language.main_menu_menu_settings_language_english);
 		miEnglish.setEnabled(false);
 		miEnglish.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -134,30 +148,30 @@ public class main_menu {
 		});
 		mnLanguage.add(miEnglish);
 		
-		JMenu mnHelp = new JMenu(language.main_menu_menu_help);
+		mnHelp = new JMenu(language.main_menu_menu_help);
 		mnHelp.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		mnHelp.setIcon(new ImageIcon(main_menu.class.getResource("/RESOURCES/Icons/help.png")));
 		menuBar.add(mnHelp);
 		
-		JMenuItem miInstructions = new JMenuItem(language.main_menu_menu_help_instructions);
+		miInstructions = new JMenuItem(language.main_menu_menu_help_instructions);
 		miInstructions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Instructions_window intructions = new Instructions_window();
+				Instructions_window intructions = new Instructions_window(miInstructions,frmVTeg);
 				intructions.setVisible(true);
 			}
 		});
 		mnHelp.add(miInstructions);
 		
-		JMenuItem miRules = new JMenuItem(language.main_menu_menu_help_rules);
+		miRules = new JMenuItem(language.main_menu_menu_help_rules);
 		miRules.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Rules_Window rules = new Rules_Window();
+				Rules_Window rules = new Rules_Window(miRules,frmVTeg);
 				rules.setVisible(true);
 			}
 		});
 		mnHelp.add(miRules);
 		
-		JMenuItem miAbout = new JMenuItem(language.main_menu_menu_help_about);
+		miAbout = new JMenuItem(language.main_menu_menu_help_about);
 		miAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null,language.about_text,language.about_title, JOptionPane.INFORMATION_MESSAGE);
