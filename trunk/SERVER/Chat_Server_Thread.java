@@ -1,6 +1,7 @@
 package SERVER;
 
 import java.io.IOException;
+import java.net.SocketException;
 import java.util.LinkedList;
 
 public class Chat_Server_Thread extends Thread{
@@ -27,9 +28,11 @@ public class Chat_Server_Thread extends Thread{
 						break;//corta el ciclo
 					}
 				}
-			}catch ( IOException Exception ) {
-		       	  System.out.println( "\nSe recibió un tipo de objeto desconocido" );
-		       	  Exception.printStackTrace();
+			}catch ( IOException exception ) {
+				  if (exception.getClass().equals(SocketException.class)){
+					  break;
+				  }
+				  System.out.println( "\n Se recibió un tipo de objeto desconocido" );
 		    }catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -40,7 +43,7 @@ public class Chat_Server_Thread extends Thread{
 			client_list.get(i).getIn().close();
 			//client_list.remove(i);
 			client_list.get(i).setActive(false);
-	        System.out.println("CLIENTE N "+client_list.get(i).getClient_Number()+" DESCONECTADO>>> ");
+	        System.out.println("\n CLIENTE N "+client_list.get(i).getClient_Number()+" DESCONECTADO>>> ");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -57,7 +60,7 @@ public class Chat_Server_Thread extends Thread{
 					client_list.get(i).getOut().flush();
 			        System.out.println("CLIENTE N "+client.getClient_Number()+" DICE>>> " + text );
 			    }catch ( IOException excepcionES ) {// si hubo un error al transmitir el msj
-		          System.out.println("\nError al escribir objeto en el CLIENTE N"+client.getClient_Number() );
+		          System.out.println("\n Error al escribir objeto en el CLIENTE N"+client.getClient_Number() );
 		        }
 			//}
 			i++;
