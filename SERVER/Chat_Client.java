@@ -12,53 +12,100 @@ public class Chat_Client {
 	private Socket client;
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
+
+	private String host;
+	private Integer port;
    
-	private String host = "localhost";
-	private Integer port = 11000;
-   
-	private static Chat_window chat_window;
+	private Chat_window chat_window;
    
 	
-	public Chat_Client(){
-		//chat_window = new Chat_window(this);
+	public Chat_Client(String host, Integer port){
+		this.setHost(host);
+		this.setPort(port);
+		chat_window = new Chat_window(this);
+		chat_window.setVisible(true);
+		try{
+			client = new Socket( host, port );
+		    out = new ObjectOutputStream( client.getOutputStream() );      
+		    out.flush();
+		    in = new ObjectInputStream( client.getInputStream() );
+		}catch (IOException ioExcep){
+			System.out.println("Error al crear el cliente");
+		}
 	}
-	/**
-	 * @param args
-	 */
 	
 	public void sendMge(String mge){
-		
+	      try {
+	         out.writeObject( mge );
+	         out.flush();
+	         //chat_window.setChatText(mge);
+	      }
+	      catch ( IOException excepcionES ) {
+	         System.out.println("\n Error del cliente al enviar mensaje" );
+	      }
 	}
 	
-	@SuppressWarnings("unused")
-	private void serverConnect() throws IOException{
-		client = new Socket( host, port );
-	}
-	
-	public void getMsg() throws IOException{
-	      // establecer flujo de entrada para los objetos
-	      setIn(new ObjectInputStream( client.getInputStream() ));
-	}
-	
-	public void sendMsg() throws IOException{
-	      out = new ObjectOutputStream( client.getOutputStream() );      
-	      out.flush(); // vacíar búfer de salida para enviar información de encabezado
-	}
-	
-	public static void main(String[] args) {
+	public void getMsg(){
+		  String mge = "";
+	      do {
+	          try {
+	        	  mge = ( String ) in.readObject();
+	        	  chat_window.setChatText(mge);
+	          }
+	          catch ( ClassNotFoundException excepcionClaseNoEncontrada ) {
+	             System.out.println("\n Se recibió un objeto de tipo desconocido" );
+	          }
+	          catch (IOException ioExcep){
+	        	  System.out.println("\n Error del cliente al recibir un mensaje");
+	        	  break;
+	          }
 
+	       } while ( !mge.equals( "SERVIDOR>>> TERMINAR" ) );
 	}
-	public static Chat_window getChat_window() {
-		return chat_window;
+	
+	   private void closeConection() 
+	   {
+	      try {
+	         out.close();
+	         in.close();
+	         client.close();
+	      }
+	      catch( IOException excepcionES ) {
+	         excepcionES.printStackTrace();
+	      }
+	   }
+	public static void main(String[] args) {
+		Chat_Client client = new Chat_Client("localhost", 11000);
+		client.getMsg();
 	}
-	public static void setChat_window(Chat_window chat_window) {
-		Chat_Client.chat_window = chat_window;
-	}
+	
+	//Gets and Sets
+
 	public ObjectInputStream getIn() {
 		return in;
 	}
 	public void setIn(ObjectInputStream in) {
 		this.in = in;
+	}
+	public String getHost() {
+		return host;
+	}
+	public void setHost(String host) {
+		this.host = host;
+	}
+	public Integer getPort() {
+		return port;
+	}
+	public void setPort(Integer port) {
+		this.port = port;
+	}
+
+	public ObjectOutputStream getOut() {
+		return out;
+	}
+
+	public void setOut(ObjectOutputStream out) {
+		this.out = out;
 	}
 
 }

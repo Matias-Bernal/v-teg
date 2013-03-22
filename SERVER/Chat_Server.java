@@ -30,17 +30,15 @@ public class Chat_Server extends Thread{
 		Integer e = 0;
 		while (true){
 			try {
-				server_log.concat("Esperando una conexión\n");
-				System.out.println("Esperando una conexión\n");
+				System.out.println("Esperando una conexión \n");
 				@SuppressWarnings("resource")
 				Socket connection = new Socket();
 				connection = server.accept();
-				int i = 0;
 				boolean find = false;
-				/*while (i<client_list.size() && !find){
+				/*
+				int i = 0;
+				while (i<client_list.size() && !find){
 					if (client_list.get(i).getConnection().getInetAddress().equals(connection.getInetAddress())&&client_list.get(i).isAvtive()){
-					
-						server_log.concat("Intento de conexion fallido, cliente ya esta en la lista\n");
 						System.out.println("Intento de conexion fallido, cliente ya esta en la lista\n");
 						find = true;
 					}
@@ -51,27 +49,21 @@ public class Chat_Server extends Thread{
 					ObjectInputStream new_in = new ObjectInputStream(connection.getInputStream());
 					Server_Client new_client = new Server_Client(connection, new_out, new_in,n_client);
 					client_list.add(new_client);
-					n_client++;
-					new_out.flush();
-					mensaje = "SERVIDOR VTEG DICE:>>> BIENVENIDO AL SERVER DE VTEG O.1";
+					mensaje = "SERVIDOR VTEG DICE:>>> BIENVENIDO AL SERVER DE VTEG 0.1 \nUD ES EL CLIENTE NUMERO "+(n_client)+"\n";
 					new_out.writeObject(mensaje);
 					new_out.flush();
-					server_log.concat("\n Cliente "+connection.getInetAddress().toString()+" se ha conectado.");
 					System.out.println("\n Cliente "+connection.getInetAddress().toString()+" se ha conectado.");
-					
 					//si se pudo conectar manda el hilo que maneja la recepcion y reenvio de msj
 					new Chat_Server_Thread(client_list, e, n_client).start();
+					n_client++;
 					e++;
 				}
 			}
 			catch (Exception excepcionES) {
-				server_log.concat("\n ERROR AL CONECTAR");
-				System.out.println("\n ERROR AL CONECTAR");
+				System.out.println("\n Error server al conectar cliente");
 			}
 		}
 	}
-	
-
 	
 	/**
 	 * @param args
