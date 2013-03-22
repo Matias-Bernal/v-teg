@@ -10,6 +10,7 @@ public class Server_Client {
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
 	private int client_number;
+	private boolean active=true;
 	
 	public Server_Client(Socket connection, ObjectOutputStream out, ObjectInputStream in, int client_numer){
 		this.connection = connection;
@@ -45,5 +46,22 @@ public class Server_Client {
 	public int getClient_Number(){
 		return client_number;
 	}
+
+	public int getClient_number() {
+		return client_number;
+	}
+
+	public void setClient_number(int client_number) {
+		this.client_number = client_number;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
 	
 }
