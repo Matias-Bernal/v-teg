@@ -26,9 +26,6 @@ public class Chat_Client extends Thread{
 		this.setHost(host);
 		this.setPort(port);
 		this.setLanguage(language);
-		chat_window = new Chat_window(this,language);
-		chat_window.setVisible(true);
-		chat_window.repaint();
 		try{
 			client = new Socket( host, port );
 		    out = new ObjectOutputStream( client.getOutputStream() );      
@@ -38,6 +35,9 @@ public class Chat_Client extends Thread{
 		}catch (IOException ioExcep){
 			System.out.println("Error al crear el cliente");
 		}
+		chat_window = new Chat_window(this,language);
+		chat_window.setVisible(true);
+		chat_window.repaint();
 	}
 	
 	public void sendMge(String mge){
@@ -95,10 +95,18 @@ public class Chat_Client extends Thread{
 	}
 	
 	//Gets and Sets
-
+	
 	public ObjectInputStream getIn() {
 		return in;
 	}
+	public Socket getClient() {
+		return client;
+	}
+
+	public void setClient(Socket client) {
+		this.client = client;
+	}
+
 	public void setIn(ObjectInputStream in) {
 		this.in = in;
 	}
