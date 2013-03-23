@@ -127,8 +127,8 @@ public class Connection_window extends JFrame {
 		bConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				Chat_Client chat = new Chat_Client(tfAdrress.getText(),Integer.parseInt(tfPort.getText()) , getLanguage());
-				chat.getMsg();
+				new Chat_Client(tfAdrress.getText(),Integer.parseInt(tfPort.getText()) , getLanguage()).start();
+				
 			}
 		});
 		bConnect.setFont(new Font("Lucida Console", Font.BOLD, 12));
