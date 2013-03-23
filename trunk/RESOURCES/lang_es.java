@@ -26,5 +26,19 @@ public class lang_es extends ilanguage {
 		//
 		set_aw_tittle("Acerca de.");
 		set_aw_text("Virtual TEG 2013, Version 1.0");
+		
+		set_chat_title("Chat VTEG");
+		set_chat_welcome("SERVIDOR VTEG DICE:>>> BIENVENIDO AL SERVER DE VTEG 0.1 \nUD ES EL CLIENTE NUMERO ");
+		set_chat_client_n(" CLIENTE N ");
+		set_chat_disconnect(" DESCONECTADO ");
+		set_chat_say(" DICE>>> ");
+		set_chat_send("Enviar");
+		
+		set_connection_cancel("cancelar");
+		set_connection_conect("unirse");
+		set_connection_ip_adress_label("IP");
+		set_connection_port_label("Puerto");
+		set_connection_title("Unirse  una partida");
+		
 	}
 }

@@ -6,6 +6,8 @@ import java.io.ObjectOutputStream;
 import java.net.*;
 
 import GUI.Chat_window;
+import RESOURCES.ilanguage;
+import RESOURCES.lang_es;
 
 public class Chat_Client {
 
@@ -17,18 +19,22 @@ public class Chat_Client {
 	private Integer port;
    
 	private Chat_window chat_window;
+	private ilanguage language;
    
 	
-	public Chat_Client(String host, Integer port){
+	public Chat_Client(String host, Integer port,ilanguage language){
 		this.setHost(host);
 		this.setPort(port);
-		chat_window = new Chat_window(this);
+		this.setLanguage(language);
+		chat_window = new Chat_window(this,language);
 		chat_window.setVisible(true);
+		chat_window.repaint();
 		try{
 			client = new Socket( host, port );
 		    out = new ObjectOutputStream( client.getOutputStream() );      
 		    out.flush();
 		    in = new ObjectInputStream( client.getInputStream() );
+		    sendMge( language.getClass().toString());
 		}catch (IOException ioExcep){
 			System.out.println("Error al crear el cliente");
 		}
@@ -61,9 +67,13 @@ public class Chat_Client {
 	          }
 
 	       } while ( !mge.equals( "SERVIDOR>>> TERMINAR" ) );
+	      
 	}
 	
-	   private void closeConection() 
+	//ver cuando se ejecuta
+ 
+    @SuppressWarnings("unused")
+	private void closeConection() 
 	   {
 	      try {
 	         out.close();
@@ -75,7 +85,7 @@ public class Chat_Client {
 	      }
 	   }
 	public static void main(String[] args) {
-		Chat_Client client = new Chat_Client("localhost", 11000);
+		Chat_Client client = new Chat_Client("localhost", 11000,new lang_es());
 		client.getMsg();
 	}
 	
@@ -106,6 +116,14 @@ public class Chat_Client {
 
 	public void setOut(ObjectOutputStream out) {
 		this.out = out;
+	}
+
+	public ilanguage getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(ilanguage language) {
+		this.language = language;
 	}
 
 }

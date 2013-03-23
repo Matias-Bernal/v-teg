@@ -15,16 +15,12 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
-
-import RESOURCES.ilanguage;
-import SERVER.Chat_Client;
-
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class Connection_window extends JFrame {
+public class Create_window extends JFrame {
 
 	/**
 	 * 
@@ -32,15 +28,14 @@ public class Connection_window extends JFrame {
 	private JPanel contentPane;
 	private JTextField tfAdrress;
 	private JTextField tfPort;
-	private ilanguage lang;
+
 	/**
 	 * Create the frame.
 	 */
-	public Connection_window(ilanguage lang) {
-		this.lang=lang;
+	public Create_window() {
 		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Connection_window.class.getResource("/RESOURCES/Icons/hm-about.png")));
-		setTitle(lang.get_connection_title());
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Create_window.class.getResource("/RESOURCES/Icons/hm-about.png")));
+		setTitle("Connect");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 320, 164);
 		contentPane = new JPanel();
@@ -54,12 +49,12 @@ public class Connection_window extends JFrame {
 		Panel pTextFields = new Panel();
 		contentPane.add(pTextFields, BorderLayout.CENTER);
 		
-		JLabel lblAdrressLabel = new JLabel(lang.get_connection_ip_adress_label());
+		JLabel lblAdrressLabel = new JLabel("IP ADRRESS");
 		lblAdrressLabel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		lblAdrressLabel.setFont(new Font("Lucida Console", Font.BOLD, 16));
 		lblAdrressLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel lblPortLabel = new JLabel(lang.get_connection_port_label());
+		JLabel lblPortLabel = new JLabel("PORT");
 		lblPortLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPortLabel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		lblPortLabel.setFont(new Font("Lucida Console", Font.BOLD, 16));
@@ -83,14 +78,15 @@ public class Connection_window extends JFrame {
 		gl_pTextFields.setHorizontalGroup(
 			gl_pTextFields.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pTextFields.createSequentialGroup()
-					.addGroup(gl_pTextFields.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_pTextFields.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_pTextFields.createSequentialGroup()
 							.addGap(44)
-							.addComponent(lblPortLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addComponent(lblPortLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGap(42))
 						.addGroup(gl_pTextFields.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(lblAdrressLabel)))
-					.addGap(42)
+							.addComponent(lblAdrressLabel)
+							.addPreferredGap(ComponentPlacement.RELATED)))
 					.addGroup(gl_pTextFields.createParallelGroup(Alignment.LEADING)
 						.addComponent(tfAdrress, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
 						.addComponent(tfPort, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
@@ -101,20 +97,20 @@ public class Connection_window extends JFrame {
 				.addGroup(gl_pTextFields.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_pTextFields.createParallelGroup(Alignment.BASELINE)
-						.addComponent(tfAdrress, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblAdrressLabel, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblAdrressLabel, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+						.addComponent(tfAdrress, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_pTextFields.createParallelGroup(Alignment.BASELINE)
 						.addComponent(tfPort, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblPortLabel))
-					.addContainerGap(30, Short.MAX_VALUE))
+					.addContainerGap(70, Short.MAX_VALUE))
 		);
 		pTextFields.setLayout(gl_pTextFields);
 		
 		Panel pButtons = new Panel();
 		contentPane.add(pButtons, BorderLayout.SOUTH);
 		
-		Button bCancel = new Button(lang.get_connection_cancel());
+		Button bCancel = new Button("Cancelar");
 		bCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -123,20 +119,9 @@ public class Connection_window extends JFrame {
 		bCancel.setFont(new Font("Lucida Console", Font.BOLD, 12));
 		pButtons.add(bCancel);
 		
-		Button bConnect = new Button(lang.get_connection_conect());
-		bConnect.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				Chat_Client chat = new Chat_Client(tfAdrress.getText(),Integer.parseInt(tfPort.getText()) , getLanguage());
-				chat.getMsg();
-			}
-		});
+		Button bConnect = new Button("Conectar");
 		bConnect.setFont(new Font("Lucida Console", Font.BOLD, 12));
 		pButtons.add(bConnect);
-	}
-	
-	public ilanguage getLanguage(){
-		return lang;
 	}
 
 }

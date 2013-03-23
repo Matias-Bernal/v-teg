@@ -11,13 +11,12 @@ public class Chat_Server extends Thread{
 
 	private ServerSocket server;
 	private LinkedList<Server_Client> client_list;
-	private String server_log;
+
 
 	public Chat_Server(int port) {
 		try {
 			server = new ServerSocket(port);
 			client_list = new LinkedList<Server_Client>();
-			server_log = new String();
 		}
 		catch (IOException excepcionES) {
 			excepcionES.printStackTrace();
@@ -25,7 +24,6 @@ public class Chat_Server extends Thread{
 	}
 
 	public void runServer() {
-		String mensaje;
 		int n_client = 1;
 		Integer e = 0;
 		while (true){
@@ -49,10 +47,6 @@ public class Chat_Server extends Thread{
 					ObjectInputStream new_in = new ObjectInputStream(connection.getInputStream());
 					Server_Client new_client = new Server_Client(connection, new_out, new_in,n_client);
 					client_list.add(new_client);
-					mensaje = "SERVIDOR VTEG DICE:>>> BIENVENIDO AL SERVER DE VTEG 0.1 \nUD ES EL CLIENTE NUMERO "+(n_client)+"\n";
-					new_out.writeObject(mensaje);
-					new_out.flush();
-					System.out.println("\n Cliente "+connection.getInetAddress().toString()+" se ha conectado.");
 					//si se pudo conectar manda el hilo que maneja la recepcion y reenvio de msj
 					new Chat_Server_Thread(client_list, e, n_client).start();
 					n_client++;

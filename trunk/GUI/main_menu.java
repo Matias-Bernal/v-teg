@@ -96,7 +96,7 @@ public class main_menu {
 		miConnect = new JMenuItem(language.main_menu_menu_game_connect);
 		miConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Connection_window connection = new Connection_window();
+				Connection_window connection = new Connection_window(language);
 				connection.setVisible(true);
 			}
 		});
