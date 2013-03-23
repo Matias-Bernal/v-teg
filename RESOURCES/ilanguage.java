@@ -7,7 +7,7 @@ public class ilanguage {
 	//Menu Game
 	public String main_menu_menu_game = null;
 	public String main_menu_menu_game_connect = null;
-	public String main_menu_menu_game_disconnect = null;
+	public String main_menu_menu_game_create = null;
 	public String main_menu_menu_game_exit = null;
 	//Menu Acciones
 	public String main_menu_menu_actions = null;
@@ -42,6 +42,12 @@ public class ilanguage {
 	public String connection_cancel = null;
 	public String connection_conect = null;
 	
+	//create_match
+	public String create_match_title = null;
+	public String create_match_ip_adress_label = null;
+	public String create_match_port_label = null;
+	public String create_match_cancel = null;
+	public String create_match_conect = null;
 	
 	public void set_mm_title(String tittle){
 		main_menu_title = tittle;
@@ -56,8 +62,8 @@ public class ilanguage {
 	public void set_mm_game_connect(String game_connect){
 		main_menu_menu_game_connect = game_connect;
 	}
-	public void set_mm_game_disconnect(String game_disconnect){
-		main_menu_menu_game_disconnect = game_disconnect;
+	public void set_mm_game_create(String create){
+		main_menu_menu_game_create = create;
 	}
 	public void set_mm_game_exit(String exit){
 		main_menu_menu_game_exit = exit;
@@ -142,36 +148,40 @@ public class ilanguage {
 		this.chat_title = chat_title;
 	}
 	
-	public String get_connection_title() {
-		return connection_title;
-	}
+	
 	public void set_connection_title(String conection_title) {
 		this.connection_title = conection_title;
-	}
-	public String get_connection_ip_adress_label() {
-		return connection_ip_adress_label;
 	}
 	public void set_connection_ip_adress_label(String conection_ip_adress_label) {
 		this.connection_ip_adress_label = conection_ip_adress_label;
 	}
-	public String get_connection_port_label() {
-		return connection_port_label;
-	}
 	public void set_connection_port_label(String conection_port_label) {
 		this.connection_port_label = conection_port_label;
-	}
-	public String get_connection_cancel() {
-		return connection_cancel;
 	}
 	public void set_connection_cancel(String conection_cancel) {
 		this.connection_cancel = conection_cancel;
 	}
-	public String get_connection_conect() {
-		return connection_conect;
-	}
 	public void set_connection_conect(String conection_conect) {
 		this.connection_conect = conection_conect;
 	}
+
+	public void set_create_match_title(String create_match_title) {
+		this.create_match_title = create_match_title;
+	}
+	public void set_create_match_ip_adress_label(String create_match_ip_adress_label) {
+		this.create_match_ip_adress_label = create_match_ip_adress_label;
+	}
+	public void set_create_match_port_label(String create_match_port_label) {
+		this.create_match_port_label = create_match_port_label;
+	}
+	public void set_create_match_cancel(String create_match_cancel) {
+		this.create_match_cancel = create_match_cancel;
+	}
+	public void set_create_match_conect(String create_match_conect) {
+		this.create_match_conect = create_match_conect;
+	}
+	
+	
 	public ilanguage getLanguage (String classString){
 		if(classString.equals(lang_es.class.toString()))
 			return new lang_es();

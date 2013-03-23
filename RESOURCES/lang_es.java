@@ -8,7 +8,7 @@ public class lang_es extends ilanguage {
 		
 		set_mm_game("Partida");
 		set_mm_game_connect("Conectar");
-		set_mm_game_disconnect("Desconectar");
+		set_mm_game_create("Crear Partida");
 		set_mm_game_exit("Salir");
 		
 		set_mm_actions("Acciones");
@@ -39,6 +39,12 @@ public class lang_es extends ilanguage {
 		set_connection_ip_adress_label("IP");
 		set_connection_port_label("Puerto");
 		set_connection_title("Unirse  una partida");
+		
+		set_create_match_cancel("cancelar");
+		set_create_match_conect("crear partida");
+		set_create_match_ip_adress_label("IP");
+		set_create_match_port_label("Puerto");
+		set_create_match_title("Crear una partida");
 		
 	}
 }

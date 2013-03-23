@@ -18,13 +18,14 @@ import javax.swing.border.EtchedBorder;
 
 import RESOURCES.ilanguage;
 import SERVER.Chat_Client;
+import SERVER.Chat_Server;
 
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class Connection_window extends JFrame {
+public class Create_match_window extends JFrame {
 
 	/**
 	 * 
@@ -36,11 +37,11 @@ public class Connection_window extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Connection_window(ilanguage lang) {
+	public Create_match_window(ilanguage lang) {
 		this.lang=lang;
 		setResizable(false);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Connection_window.class.getResource("/RESOURCES/Icons/hm-about.png")));
-		setTitle(lang.connection_title);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Create_match_window.class.getResource("/RESOURCES/Icons/hm-about.png")));
+		setTitle(lang.create_match_title);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 300, 162);
 		contentPane = new JPanel();
@@ -54,12 +55,12 @@ public class Connection_window extends JFrame {
 		Panel pTextFields = new Panel();
 		contentPane.add(pTextFields, BorderLayout.CENTER);
 		
-		JLabel lblAdrressLabel = new JLabel(lang.connection_ip_adress_label);
+		JLabel lblAdrressLabel = new JLabel(lang.create_match_ip_adress_label);
 		lblAdrressLabel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		lblAdrressLabel.setFont(new Font("Lucida Console", Font.BOLD, 16));
 		lblAdrressLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel lblPortLabel = new JLabel(lang.connection_port_label);
+		JLabel lblPortLabel = new JLabel(lang.create_match_port_label);
 		lblPortLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPortLabel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		lblPortLabel.setFont(new Font("Lucida Console", Font.BOLD, 16));
@@ -113,7 +114,7 @@ public class Connection_window extends JFrame {
 		Panel pButtons = new Panel();
 		contentPane.add(pButtons, BorderLayout.SOUTH);
 		
-		Button bCancel = new Button(lang.connection_cancel);
+		Button bCancel = new Button(lang.create_match_cancel);
 		bCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -122,12 +123,12 @@ public class Connection_window extends JFrame {
 		bCancel.setFont(new Font("Lucida Console", Font.BOLD, 12));
 		pButtons.add(bCancel);
 		
-		Button bConnect = new Button(lang.connection_conect);
+		Button bConnect = new Button(lang.create_match_conect);
 		bConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				new Chat_Client(tfAdrress.getText(),Integer.parseInt(tfPort.getText()) , getLanguage()).start();
-				
+				new Chat_Server(Integer.parseInt(tfPort.getText())).start();
+				new Chat_Client(tfAdrress.getText(),Integer.parseInt(tfPort.getText()) , getLanguage()).start();				
 			}
 		});
 		bConnect.setFont(new Font("Lucida Console", Font.BOLD, 12));
