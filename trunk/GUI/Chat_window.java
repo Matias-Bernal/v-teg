@@ -18,8 +18,6 @@ import javax.swing.border.EtchedBorder;
 
 import RESOURCES.ilanguage;
 import SERVER.Chat_Client;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 @SuppressWarnings("serial")
 public class Chat_window extends JFrame {
@@ -33,7 +31,7 @@ public class Chat_window extends JFrame {
 	
 	public Chat_window(Chat_Client client, ilanguage language) {
 		this.language = language;
-		setTitle(this.language.get_chat_title());
+		setTitle(this.language.get_chat_title() + " - "+client.getClient().getInetAddress().toString()+":"+client.getPort());
 		this.chat_client = client;
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -73,9 +71,10 @@ public class Chat_window extends JFrame {
 		current_text = new JTextArea();
 		current_text.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyPressed(KeyEvent e) {
+			public void keyReleased(KeyEvent e) {
 				if (e.getKeyCode()== KeyEvent.VK_ENTER){
-					sendMge();					
+					current_text.setText(current_text.getText().substring(0, current_text.getText().length()-1));
+					sendMge();	
 				}
 			}
 		});
