@@ -9,7 +9,7 @@ import GUI.Chat_window;
 import RESOURCES.ilanguage;
 import RESOURCES.lang_es;
 
-public class Chat_Client {
+public class Chat_Client extends Thread{
 
 	private Socket client;
 	private ObjectOutputStream out;
@@ -87,6 +87,11 @@ public class Chat_Client {
 	public static void main(String[] args) {
 		Chat_Client client = new Chat_Client("localhost", 11000,new lang_es());
 		client.getMsg();
+	}
+	
+	@Override
+	public void run (){
+		getMsg();
 	}
 	
 	//Gets and Sets
