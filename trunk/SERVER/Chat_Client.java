@@ -67,7 +67,6 @@ public class Chat_Client extends Thread{
 	          }
 
 	       } while ( !mge.equals( "SERVIDOR>>> TERMINAR" ) );
-	      
 	}
 	
 	//ver cuando se ejecuta
