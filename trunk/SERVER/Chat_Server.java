@@ -59,6 +59,11 @@ public class Chat_Server extends Thread{
 		}
 	}
 	
+	
+	@Override
+	public void run (){
+		runServer();
+	}
 	/**
 	 * @param args
 	 */

@@ -93,6 +93,15 @@ public class main_menu {
 		mnGame.setIcon(new ImageIcon(main_menu.class.getResource("/RESOURCES/Icons/game.png")));
 		menuBar.add(mnGame);
 		
+		miDisconnect = new JMenuItem(language.main_menu_menu_game_create);
+		miDisconnect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Create_match_window create = new Create_match_window(language);
+				create.setVisible(true);
+			}
+		});
+		mnGame.add(miDisconnect);
+
 		miConnect = new JMenuItem(language.main_menu_menu_game_connect);
 		miConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -101,9 +110,6 @@ public class main_menu {
 			}
 		});
 		mnGame.add(miConnect);
-		
-		miDisconnect = new JMenuItem(language.main_menu_menu_game_disconnect);
-		mnGame.add(miDisconnect);
 		
 		JSeparator separator_game = new JSeparator();
 		mnGame.add(separator_game);
