@@ -14,9 +14,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
+import RESOURCES.ilanguage;
 import SERVER.Chat_Client;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 @SuppressWarnings("serial")
 public class Chat_window extends JFrame {
@@ -26,17 +27,18 @@ public class Chat_window extends JFrame {
 	private JTextArea current_text;
 	private JTextArea history_text;
 	private JScrollPane scroll_chat_text;
+	private ilanguage language;
 	
-	public Chat_window(Chat_Client client) {
-		setType(Type.UTILITY);
-		setTitle("Chat VTEG");
+	public Chat_window(Chat_Client client, ilanguage language) {
+		this.language = language;
+		setTitle(this.language.get_chat_title());
 		this.chat_client = client;
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JButton btnEnviar = new JButton("Enviar");
+		JButton btnEnviar = new JButton(this.language.get_chat_send());
 		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				sendMge();
@@ -86,5 +88,13 @@ public class Chat_window extends JFrame {
 		history_text.setText(update_text);
 		history_text.setCaretPosition(update_text.length());
 		//history_text.append(new_mge);
+	}
+
+	public ilanguage getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(ilanguage language) {
+		this.language = language;
 	}
 }
