@@ -2,6 +2,8 @@ package GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -69,6 +71,14 @@ public class Chat_window extends JFrame {
 		);
 		
 		current_text = new JTextArea();
+		current_text.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()== KeyEvent.VK_ENTER){
+					sendMge();					
+				}
+			}
+		});
 		scroll_chat_text.setViewportView(current_text);
 		current_text.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		
