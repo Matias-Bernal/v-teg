@@ -42,7 +42,7 @@ public class Connection_window extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Connection_window.class.getResource("/RESOURCES/Icons/hm-about.png")));
 		setTitle(lang.get_connection_title());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 320, 164);
+		setBounds(100, 100, 300, 162);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -65,6 +65,7 @@ public class Connection_window extends JFrame {
 		lblPortLabel.setFont(new Font("Lucida Console", Font.BOLD, 16));
 		
 		tfAdrress = new JTextField();
+		tfAdrress.setText("localhost");
 		tfAdrress.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		tfAdrress.setHorizontalAlignment(SwingConstants.CENTER);
 		tfAdrress.setFont(new Font("Lucida Console", Font.PLAIN, 16));
@@ -73,6 +74,7 @@ public class Connection_window extends JFrame {
 		tfAdrress.setColumns(10);
 		
 		tfPort = new JTextField();
+		tfPort.setText("11000");
 		tfPort.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		tfPort.setToolTipText("Port of Server");
 		tfPort.setHorizontalAlignment(SwingConstants.CENTER);
@@ -83,30 +85,27 @@ public class Connection_window extends JFrame {
 		gl_pTextFields.setHorizontalGroup(
 			gl_pTextFields.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pTextFields.createSequentialGroup()
-					.addGroup(gl_pTextFields.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_pTextFields.createSequentialGroup()
-							.addGap(44)
-							.addComponent(lblPortLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addGroup(gl_pTextFields.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lblAdrressLabel)))
-					.addGap(42)
+					.addContainerGap()
+					.addGroup(gl_pTextFields.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(lblPortLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(lblAdrressLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_pTextFields.createParallelGroup(Alignment.LEADING)
-						.addComponent(tfAdrress, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
-						.addComponent(tfPort, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
-					.addGap(8))
+						.addComponent(tfPort, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+						.addComponent(tfAdrress, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE))
+					.addGap(89))
 		);
 		gl_pTextFields.setVerticalGroup(
 			gl_pTextFields.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pTextFields.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_pTextFields.createParallelGroup(Alignment.BASELINE)
-						.addComponent(tfAdrress, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblAdrressLabel, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblAdrressLabel, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+						.addComponent(tfAdrress, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_pTextFields.createParallelGroup(Alignment.BASELINE)
-						.addComponent(tfPort, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblPortLabel))
+						.addComponent(lblPortLabel)
+						.addComponent(tfPort, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(30, Short.MAX_VALUE))
 		);
 		pTextFields.setLayout(gl_pTextFields);
