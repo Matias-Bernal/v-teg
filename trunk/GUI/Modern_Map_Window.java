@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Point;
@@ -11,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
-public class Modern_Map_Window extends JFrame implements IVtegMap {
+public class Modern_Map_Window extends Component implements IVtegMap {
 
 	private JPanel contentPane;
 	private JLayeredPane panelPrincipal;
@@ -89,15 +90,12 @@ public class Modern_Map_Window extends JFrame implements IVtegMap {
 	 * 
 	 */
 	public Modern_Map_Window() {
-		setType(Type.UTILITY);
-		setTitle("MAPA");
+		
 		setBounds(0, 0, 645, 396);
-		setResizable(false);
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
 		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
 		
 		
 		final Dimension boar_dimension = new Dimension(640, 375);
@@ -166,7 +164,7 @@ public class Modern_Map_Window extends JFrame implements IVtegMap {
 		setCountry(uruguay_country, "uruguay",157, 245, 32, 40);
 		setCountry(yukon_country, "yukon",60, 29, 39, 55);
 		setCountry(zaire_country, "zaire",278, 249, 49, 62);
-
+		setVisible(true);
 //		
 //		JPanel panel = new JPanel_Whit_Image("/RESOURCES/Country/zaire.png");
 //		panelPrincipal.setLayer(panel, 2);
