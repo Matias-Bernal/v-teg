@@ -11,13 +11,14 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.ComponentView;
 import javax.swing.JInternalFrame;
 import java.awt.Panel;
 
 public class Game_Window extends JFrame {
 
 	private JLayeredPane contentPane;
-	private Modern_Map_Window map_window;
+	private Component map_window;
 	/**
 	 * Launch the application.
 	 */
@@ -51,7 +52,7 @@ public class Game_Window extends JFrame {
 		contentPane.add(panel, BorderLayout.CENTER);
 		
 		map_window = new Modern_Map_Window();
-		panel.add(map_window, BorderLayout.CENTER);
+		panel.add(map_window);
 		//TODO setear el estado inicial del mapa
 		
 
