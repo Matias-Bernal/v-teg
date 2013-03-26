@@ -1,4 +1,4 @@
-package Interface;
+package LOGIC;
 
 public class Pair {
 	
