@@ -1,4 +1,4 @@
-package Interface;
+package LOGIC;
 
 import java.io.Serializable;
 
@@ -6,13 +6,13 @@ public class Adjacent extends Pair implements Serializable  {
 
 	private static final long serialVersionUID = 1L;
 	
-	public Adjacent(ICountry first, ICountry second) {
+	public Adjacent(Country first, Country second) {
 		super(first, second);		
 	}
 
-	public boolean isAdjacent(ICountry c1 , ICountry c2){
-		boolean combinacion1 =(((ICountry)getFirst()).get_id()==c1.get_id())&&(((ICountry)getSecond()).get_id()==c2.get_id());
-		boolean combinacion2 =(((ICountry)getFirst()).get_id()==c2.get_id())&&(((ICountry)getSecond()).get_id()==c1.get_id());
+	public boolean isAdjacent(Country c1 , Country c2){
+		boolean combinacion1 =(((Country)getFirst()).get_id()==c1.get_id())&&(((Country)getSecond()).get_id()==c2.get_id());
+		boolean combinacion2 =(((Country)getFirst()).get_id()==c2.get_id())&&(((Country)getSecond()).get_id()==c1.get_id());
 		return combinacion1 || combinacion2;
 	}
 
@@ -21,7 +21,7 @@ public class Adjacent extends Pair implements Serializable  {
 	}
 	
 	public boolean repOK(){
-		return ((ICountry)getFirst()).get_id()!=((ICountry)getSecond()).get_id();
+		return ((Country)getFirst()).get_id()!=((Country)getSecond()).get_id();
 	}
 	
 }

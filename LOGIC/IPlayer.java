@@ -1,4 +1,4 @@
-package Interface;
+package LOGIC;
 
 public interface IPlayer{
 	int id =0; // debera setearse con el correspondiente indice del arreglo en el  mapa
