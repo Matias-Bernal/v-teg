@@ -1,37 +1,17 @@
-package LOGIC;
+package MODEL;
 
 import java.util.LinkedList;
 
 public abstract class Map {
-	
-	String pathBackground;
 	LinkedList<Country> countrys = new LinkedList<Country>();
 	LinkedList<Continent> continents = new LinkedList<Continent>();
-	int maxPlayer;
-	IPlayer[] players = new IPlayer[maxPlayer];//conjunto de fichas
 	LinkedList<Adjacent> adjacents = new LinkedList<Adjacent>();
-	LinkedList <Mision> misions = new LinkedList<Mision>();
 
 	
-	public Map(String pathBackground, int maxPlayer) {
-		super();
-		this.pathBackground = pathBackground;
-		this.maxPlayer = maxPlayer;
+	public Map() {
 	}
-	//---------------------------------------------------------------
-	public String getPathBackground() {
-		return pathBackground;
-	}
-	public void setPathBackground(String pathBackground) {
-		this.pathBackground = pathBackground;
-	}
-	//---------------------------------------------------------------
-	public int getMaxPlayer() {
-		return maxPlayer;
-	}
-	public void setMaxPlayer(int maxPlayer) {
-		this.maxPlayer = maxPlayer;
-	}
+	
+	
 	//---------------------------------------------------------------	
 	
 	public LinkedList<Country> getCountrys() {
@@ -72,19 +52,7 @@ public abstract class Map {
 	public boolean removeContinent(Continent continent) {
 		return this.continents.remove(continent);
 	}
-	//---------------------------------------------------------------
-	public IPlayer[] getPlayers() {
-		return players;
-	}
-	public void setPlayers(IPlayer[] players) {
-		this.players = players;
-	}
-	public IPlayer getPlayer(int index) {
-		return this.players[index];
-	}
-	public void setPlayer(int i,IPlayer player) {
-		this.players[i]= player;
-	}
+	
 	//---------------------------------------------------------------
 	public LinkedList<Adjacent> getAdjacents() {
 		return adjacents;
@@ -104,40 +72,13 @@ public abstract class Map {
 	public boolean removeAdjacent(Adjacent adjacent) {
 		return this.adjacents.remove(adjacent);
 	}
-	//---------------------------------------------------------------
-	public LinkedList<Mision> getMisions() {
-		return misions;
-	}
-	public void setMisions(LinkedList<Mision> misions) {
-		this.misions = misions;
-	}
-	public Mision getAMisiont(int index) {
-		return this.misions.get(index);
-	}
-	public void setMision(int i,Mision mision) {
-		this.misions.set(i, mision);
-	}
-	public boolean addMision(Mision mision) {
-		return this.misions.add(mision);
-	}
-	public boolean removeMision(Mision mision) {
-		return this.misions.remove(mision);
-	}
+	
 	//---------------------------------------------------------------
 	public boolean repOK(){
-		
-		//control de la cantidad de player
-		if (maxPlayer<2 || maxPlayer>countrys.size())
-			return false;
 		
 		//control de las adyacencias
 		for(int i = 0; i<adjacents.size();i++)
 			if (!adjacents.get(i).repOK())
-				return false;
-
-		//control de las misiones
-		for(int i = 0; i<misions.size();i++)
-			if (!misions.get(i).repOK())
 				return false;
 		
 		//controla q los continentes solo contengan paises del mapa y q no tengan paises repetidos

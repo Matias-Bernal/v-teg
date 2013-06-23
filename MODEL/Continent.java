@@ -1,4 +1,4 @@
-package LOGIC;
+package MODEL;
 
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -9,7 +9,15 @@ public abstract class Continent implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	LinkedList<Country> countrys_in_continent= new LinkedList<Country>();
+	IPlayer player;
 	
+	
+	public IPlayer get_Player() {
+		return player;
+	}
+	public void set_Player(IPlayer player) {
+		this.player = player;
+	}	
 	//methods
 	public LinkedList<Country> get_countrys(){
 		return countrys_in_continent;
