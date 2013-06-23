@@ -1,4 +1,4 @@
-package LOGIC;
+package MODEL;
 
 import java.util.LinkedList;
 
@@ -48,11 +48,17 @@ public abstract class Mision {
 	}
 	
 	public boolean repOK(){
-		if (misionComun && valueMisionComun>0)
+		if (misionComun && valueMisionComun<=0)
 			return false;
 		for (int i = 0; i < objetive.size(); i++) {
 			if(!objetive.get(i).repOK())
 				return false;
+		}
+		for (int i = 0; i < objetive.size(); i++) {
+			for (int j = i+1; j < objetive.size(); j++) {
+				if(objetive.get(i)==objetive.get(j))
+					return false;
+			}
 		}
 		return true;
 	}

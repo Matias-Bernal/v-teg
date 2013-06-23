@@ -1,4 +1,4 @@
-package LOGIC;
+package MODEL;
 
 import java.io.Serializable;
 

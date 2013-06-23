@@ -1,4 +1,4 @@
-package LOGIC;
+package MODEL;
 
 public class Pair {
 	
