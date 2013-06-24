@@ -3,14 +3,15 @@ package MODEL;
 public class State {
 	IPlayer currentPlayer;
 	int cantPlayer;
-	/*0 -estado inicial
-	 *1 -estado que mantiene el cliente
-	 *2 -estado que mantiene el server
-	 *3 -broadcast de cambio de estados se mantiene el mismo jugador
-	 *4 -broadcast de cambio de estados pasa al nuevo jugador */
+	/*0 -estado inicial (ESTADO COMPLETO = Game)
+	 *1 -broadcast de cambio de estados se mantiene el mismo jugador (ESTADO CHICO =MiniGame)
+	 *2 -(fin de turno) broadcast de cambio de estados pasa al nuevo jugador (ESTADO CHICO =MiniGame) 
+	 */
 	int stateType;
-	boolean conquest=false;
-	Game game;
+	boolean updatedCard=false;
+	//si es true hay que consultar el currentPlayer para saber quien gano eh informar cual es su mision jejeje
+	boolean endGame=false;
+	SuperGame game;
 	
 	
 	
@@ -35,19 +36,22 @@ public class State {
 	public void setStateType(int stateType) {
 		this.stateType = stateType;
 	}
-	public Game getGame() {
+	public SuperGame getGame() {
 		return game;
 	}
-	public void setGame(Game game) {
+	public void setGame(SuperGame game) {
 		this.game = game;
 	}
-
-	public boolean isConquest() {
-		return conquest;
+	public boolean isUpdatedCard() {
+		return updatedCard;
 	}
-
-	public void setConquest(boolean conquest) {
-		this.conquest = conquest;
+	public void setUpdatedCard(boolean updatedCard) {
+		this.updatedCard = updatedCard;
 	}
-	
+	public boolean isEndGame() {
+		return endGame;
+	}
+	public void setEndGame(boolean endGame) {
+		this.endGame = endGame;
+	}
 }

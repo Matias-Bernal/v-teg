@@ -2,7 +2,7 @@ package MODEL;
 
 import java.util.LinkedList;
 
-public abstract class Game {
+public abstract class Game extends SuperGame {
 
 	/***************/
 	Map map;
@@ -11,7 +11,13 @@ public abstract class Game {
 	LinkedList <Mision> misions = new LinkedList<Mision>();
 	LinkedList <Card> cards = new LinkedList<Card>();
 	/***************/	
+	
+	public Game(){
+		super();
+	}
+	
 	public Game(String pathBackground, int maxPlayer) {
+		super();
 		this.maxPlayer = maxPlayer;
 	}
 	//---------------------------------------------------------------
