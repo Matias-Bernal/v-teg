@@ -32,7 +32,6 @@ public class main_menu {
 	private JMenuItem miConnect;
 	private JMenuItem miDisconnect;
 	private JMenuItem miExit;
-	private JMenu mnActions;
 	private JMenu mnSettings;
 	private JMenuItem miSpanish;
 	private JMenuItem miEnglish;
@@ -121,12 +120,7 @@ public class main_menu {
 			}
 		});
 		mnGame.add(miExit);
-		
-		mnActions = new JMenu(language.main_menu_menu_actions);
-		mnActions.setFont(new Font("Segoe UI", Font.BOLD, 12));
-		mnActions.setIcon(new ImageIcon(main_menu.class.getResource("/RESOURCES/Icons/acctions.png")));
-		menuBar.add(mnActions);
-		
+			
 		mnSettings = new JMenu(language.main_menu_menu_settings);
 		mnSettings.setFont(new Font("Segoe UI", Font.BOLD, 12));
 		mnSettings.setIcon(new ImageIcon(main_menu.class.getResource("/RESOURCES/Icons/config.png")));

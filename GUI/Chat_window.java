@@ -82,6 +82,7 @@ public class Chat_window extends JFrame {
 		current_text.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		
 		history_text = new JTextArea();
+		history_text.setLineWrap(true);
 		history_text.setEditable(false);
 		scroll_history_text.setViewportView(history_text);
 		contentPane.setLayout(gl_contentPane);
