@@ -1,21 +1,14 @@
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Point;
 
-import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
-public class Modern_Map_Window extends Component implements IVtegMap {
+public class Modern_Map_Window extends JLayeredPane implements IVtegMap {
 
-	private JPanel contentPane;
-	private JLayeredPane panelPrincipal;
 	private JPanel_Country argentina_country;
 	private JPanel_Country sahara_country;
 	private JPanel_Country aral_country;
@@ -67,51 +60,19 @@ public class Modern_Map_Window extends Component implements IVtegMap {
 	private JPanel_Country yukon_country;
 	private JPanel_Country zaire_country;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Modern_Map_Window frame = new Modern_Map_Window();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	/**
-	 * 
-	 */
 	public Modern_Map_Window() {
-		
-		setBounds(0, 0, 645, 396);
-		
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		
 		
 		final Dimension boar_dimension = new Dimension(640, 375);
 		final Point board_point = new Point(0, 0);
 		
-		panelPrincipal = new JLayeredPane();
-		panelPrincipal.setSize(boar_dimension);
-		panelPrincipal.setLocation(board_point);
-		contentPane.add(panelPrincipal, BorderLayout.CENTER);
-		
+		setSize(boar_dimension);
+		setLocation(board_point);
 		
 		JPanel board = new JPanel_Whit_Image("/RESOURCES/Images/board.png");
 		board.setSize(boar_dimension);
 		board.setLocation(board_point);
-		panelPrincipal.add(board);
-		panelPrincipal.setLayer(board, 1);
+		add(board);
+		setLayer(board, 1);
 
 		// CREANDO TODOS LOS PAISES //
 		setCountry(alaska_country, "alaska",21, 27, 45, 65);
@@ -174,8 +135,8 @@ public class Modern_Map_Window extends Component implements IVtegMap {
 	
 	public void setCountry(JPanel_Country country, String name, int x, int y, int width, int height){
 		country = new JPanel_Country(name,"/RESOURCES/Country/"+name+".png",x,y,width,height);
-		panelPrincipal.add(country);
-		panelPrincipal.setLayer(country, 2);
+		add(country);
+		setLayer(country, 2);
 	}
 
 }
